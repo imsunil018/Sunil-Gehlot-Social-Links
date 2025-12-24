@@ -24,7 +24,7 @@ I built this project to:
 - Create a personal social links page  
 
 ## 📸 Preview
-![Website Preview](preview.png)
+![Website Preview](Preview.png)
 
 ## 🚀 What I Learned
 - Improved layout and spacing techniques  

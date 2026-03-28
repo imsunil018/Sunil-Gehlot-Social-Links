@@ -1,48 +1,28 @@
-const links = document.querySelectorAll('a[href^="#"]');
+// ===================================
+// SCROLL PROGRESS BAR
+// ===================================
 
-links.forEach(link => {
-    link.addEventListener("click", event => {
-        event.preventDefault();
-
-        const targetId = link.getAttribute("href");
-        const targetSection = document.querySelector(targetId);
-
-        if (!targetSection) return;
-
-        targetSection.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    });
-});
-
-
-// create progress bar
+// Create progress bar element
 const progressBar = document.createElement("div");
 progressBar.id = "scroll-progress";
 document.body.appendChild(progressBar);
 
-// basic styles via JS (no CSS file needed)
+// Style the progress bar
 Object.assign(progressBar.style, {
     position: "fixed",
     top: "0",
     left: "0",
     height: "4px",
     width: "0%",
-    backgroundColor: "#3b82f6",
+    background: "linear-gradient(90deg, var(--accent-primary), var(--accent-web3))",
     zIndex: "9999",
     transition: "width 0.1s linear"
 });
 
-// update progress on scroll
+// Update progress on scroll
 window.addEventListener("scroll", () => {
     const scrollTop = window.scrollY;
-    const docHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-
-    const progress = (scrollTop / docHeight) * 100;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     progressBar.style.width = progress + "%";
 });
-
-
